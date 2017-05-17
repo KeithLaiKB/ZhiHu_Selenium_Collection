@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.java.webcrawler.PersonInfo;
+
 public class MyWebSpider {
 
 	// queue
@@ -67,11 +69,11 @@ public class MyWebSpider {
         //enter account
         MyThreadSleep.sleep50ms();
         WebElement loginAccountElementInOrgWeb1=driver.findElement(By.name("account"));
-        loginAccountElementInOrgWeb1.sendKeys("laidelivery@163.com");
+        loginAccountElementInOrgWeb1.sendKeys(PersonInfo.account);
         //enter password
         MyThreadSleep.sleep10ms();
         WebElement loginPasswordElementInOrgWeb1=driver.findElement(By.name("password"));
-        loginPasswordElementInOrgWeb1.sendKeys("pc9394940");
+        loginPasswordElementInOrgWeb1.sendKeys(PersonInfo.password);
         //
         //submit
         MyThreadSleep.sleep5s();
