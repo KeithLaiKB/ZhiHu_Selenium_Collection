@@ -1,4 +1,4 @@
-package com.java.webcrawler;
+package com.java.webcrawler.personalinfo;
 
 public class PersonalInfo {
 	//你的账号

@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import com.java.webcrawler.PersonalInfo;
+import com.java.webcrawler.personalinfo.PersonalInfo;
 
 public class MyWebSpider {
 
