@@ -7,7 +7,8 @@ import com.java.webcrawler.catcher.MyWebSpider;
 
 
 public class TestMain {
-
+//git rm -r --cached .
+	// git add .
 	public static void main(String[] args) {
 		myprocess();
 	}
