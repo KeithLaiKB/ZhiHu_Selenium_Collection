@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import com.java.webcrawler.PersonInfo;
+import com.java.webcrawler.PersonalInfo;
 
 public class MyWebSpider {
 
@@ -69,11 +69,11 @@ public class MyWebSpider {
         //enter account
         MyThreadSleep.sleep50ms();
         WebElement loginAccountElementInOrgWeb1=driver.findElement(By.name("account"));
-        loginAccountElementInOrgWeb1.sendKeys(PersonInfo.account);
+        loginAccountElementInOrgWeb1.sendKeys(PersonalInfo.account);
         //enter password
         MyThreadSleep.sleep10ms();
         WebElement loginPasswordElementInOrgWeb1=driver.findElement(By.name("password"));
-        loginPasswordElementInOrgWeb1.sendKeys(PersonInfo.password);
+        loginPasswordElementInOrgWeb1.sendKeys(PersonalInfo.password);
         //
         //submit
         MyThreadSleep.sleep5s();
