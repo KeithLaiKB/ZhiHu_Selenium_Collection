@@ -10,22 +10,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.java.webcrawler.personalinfo.PersonalInfo;
 
-public class MyWebSpider {
+public abstract class MyAbstractWebSpider {
 	//
 	//
-	// driver would be initial in constructor
-	private static WebDriver webdriver1 = null;
-
 	// each spider own a urlwarehouse
 	private UrlWarehouse urlWarehouse1 = null;
 
-	public static WebDriver getWebdriver1() {
-		return webdriver1;
-	}
-
-	public static void setWebdriver1(WebDriver webdriver1) {
-		MyWebSpider.webdriver1 = webdriver1;
-	}
 
 	public UrlWarehouse getUrlWarehouse1() {
 		return urlWarehouse1;
@@ -38,10 +28,7 @@ public class MyWebSpider {
 	//
 	//
 	// constructor
-	public MyWebSpider() {
-		System.setProperty("webdriver.chrome.driver", "./doc/chromedriver_win32/chromedriver.exe");
-		webdriver1 = new ChromeDriver();
-		webdriver1.get("https://www.zhihu.com/");
+	public MyAbstractWebSpider() {
 		//
 		//
 		urlWarehouse1 = new UrlWarehouse();
@@ -49,7 +36,7 @@ public class MyWebSpider {
 		//
 	}
 
-	public MyWebSpider(UrlWarehouse urlWarehouse1) {
+	public MyAbstractWebSpider(UrlWarehouse urlWarehouse1) {
 		this.urlWarehouse1 = urlWarehouse1;
 	}
 
@@ -238,6 +225,52 @@ public class MyWebSpider {
 		}
 
 	}
+	
+	
+	public String getUrlToTurnToNextPageInInSpecifiedPage(WebDriver driver)
+	{
+		WebElement nextpPageElement = driver.findElement(By.linkText("下一页"));
+		//获取不到，还有可能最后一页之类的
+		if (nextpPageElement.getAttribute("href") != null||nextpPageElement.getAttribute("href").trim().equals("")==true) 
+		{
+				//
+				// 已存在准备列表中
+				if (urlWarehouse1.checkStrqueueCollectionUrlToRequest1ExsitdStr(nextpPageElement.getAttribute("href") ) == true) {
+					// do nothing because it exists
+					System.out.println(nextpPageElement.getAttribute("href")  + " exsits to request");
+				} else 
+				{
+					// 已存在已看过的列表中
+					if (urlWarehouse1.checkStrsetCollectionUrlVisitedExistedStr(nextpPageElement.getAttribute("href") ) == true) 
+					{
+						// do nothing because it is visited
+						System.out.println(nextpPageElement.getAttribute("href") + " has been visited");
+					}
+					else 
+					{
+						urlWarehouse1.addStrqueueCollectionUrlToRequest1(nextpPageElement.getAttribute("href") );
+						System.out.println("fkyoooooooooooooooooooooooooooooooooooooooooo:"+nextpPageElement.getAttribute("href"));
+					}
+
+				}
+				//
+				//
+				//
+				/*
+				 * if(checkVisitedBySet(this.queueAnswerUrlVisited,e.
+				 * getAttribute("href"))==true) { //do nothing because it is
+				 * visited
+				 * System.out.println(e.getAttribute("href")+" exsits"); }
+				 * else {
+				 * queueAnswerUrlToRequest1.add(e.getAttribute("href")); }
+				 */
+				//
+
+				//
+
+		}
+		return nextpPageElement.getAttribute("href");
+	}
 
 	public void getSpecifiedAnswerContent2(WebDriver driver) {
 		MyThreadSleep.sleep2s();
@@ -284,5 +317,6 @@ public class MyWebSpider {
 
 		}
 	}
+
 
 }

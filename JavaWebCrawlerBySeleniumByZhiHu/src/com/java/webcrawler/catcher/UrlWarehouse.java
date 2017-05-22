@@ -6,6 +6,7 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.Semaphore;
 
+
 public class UrlWarehouse {
 	
 	private Semaphore smphoreStrqueueCollectionUrlToRequest1=new Semaphore(1);
@@ -15,6 +16,7 @@ public class UrlWarehouse {
 	
 	// queue
 	private volatile Queue<String> strqueueCollectionUrlToRequest1 = new LinkedList<String>();
+	private volatile Set<String> strsetCollectionUrlVisited=new HashSet<String>();
 	
 	private volatile Queue<String> strqueueAnswerUrlToRequest1 = new LinkedList<String>();
 	private volatile Set<String> strsetAnswerUrlVisited=new HashSet<String>();
@@ -170,6 +172,13 @@ public class UrlWarehouse {
 	
 	
 	
+	
+	public boolean checkStrqueueCollectionUrlToRequest1ExsitdStr(String str)
+	{
+		return this.checkExistedByStrqueue(this.strqueueCollectionUrlToRequest1, str);
+		
+		
+	}
 	
 	
 	
@@ -385,8 +394,21 @@ public class UrlWarehouse {
 	
 	
 	
+	/*
+	 * 
+	 * strsetImgUrlVisited check visited
+	 * 
+	 * 
+	 */
+
+	public boolean checkStrsetCollectionUrlVisitedExistedStr(String str)
+	{
+		return this.checkVisitedByStrset(this.strsetCollectionUrlVisited, str);
+		
+		
+	}
 	
-	/**
+	/*
 	 * 
 	 * 
 	 * strsetAnswerUrlVisited check visited
@@ -416,7 +438,7 @@ public class UrlWarehouse {
 	}
 	
 	
-	/**
+	/*
 	 * 
 	 * strsetImgUrlVisited check visited
 	 * 
@@ -429,8 +451,7 @@ public class UrlWarehouse {
 		
 		
 	}
-	
-	
+
 	
 	
 	

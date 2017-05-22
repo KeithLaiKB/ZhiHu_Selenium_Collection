@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class DownLoadPicFactory implements Runnable{
 
-	private MyWebSpider myWebSpider1=null;
+	private MyAbstractWebSpider myWebSpider1=null;
 	
 	
 	
@@ -21,7 +21,7 @@ public class DownLoadPicFactory implements Runnable{
 		
 	}
 	
-	public DownLoadPicFactory(MyWebSpider myWebSpider1)
+	public DownLoadPicFactory(MyAbstractWebSpider myWebSpider1)
 	{
 		this.myWebSpider1=myWebSpider1;
 	}
@@ -56,6 +56,7 @@ public class DownLoadPicFactory implements Runnable{
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println("fail to down load");
 			return -1;
 		}    
 
